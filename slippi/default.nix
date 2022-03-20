@@ -71,7 +71,6 @@ in stdenv.mkDerivation rec {
       --prefix LD_LIBRARY_PATH : "${vulkan-loader}/lib" \
       --prefix PATH : "${xdg_utils}/bin"
     ln -s $out/dolphin-emu $out/bin/slippi-playback
-    ln -s ${playback-desktop}/share/applications $out/share
   '' else ''
     wrapProgram "$out/dolphin-emu" \
       --set "GDK_BACKEND" "x11" \
@@ -79,7 +78,6 @@ in stdenv.mkDerivation rec {
       --prefix LD_LIBRARY_PATH : "${vulkan-loader}/lib" \
       --prefix PATH : "${xdg_utils}/bin"
     ln -s $out/dolphin-emu $out/bin/slippi-netplay
-    ln -s ${netplay-desktop}/share/applications $out/share
   '';
 
   nativeBuildInputs = [ pkgconfig cmake wrapGAppsHook ];
